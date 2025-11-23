@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>לשתות את עצמינו לדעת – ענבל קפלן</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    :root {
+        --bg: #0f172a;
+        --bg-alt: #020617;
+        --accent: #eab308;
+        --text: #f9fafb;
+        --muted: #94a3b8;
+    }
+
+    * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+        color: var(--text);
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    /* ---------------- HEADER ---------------- */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+        background: rgba(15,23,42,0.9);
+        border-bottom: 1px solid rgba(148,163,184,0.25);
+    }
+
+    .nav {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0.75rem 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .logo-dot {
+        width: 0.7rem;
+        height: 0.7rem;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #facc15, #eab308);
+        box-shadow: 0 0 18px rgba(234,179,8,0.85);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 1.2rem;
+    }
+
+    .nav-links a {
+        font-size: 0.95rem;
+        color: var(--muted);
+        padding-bottom: 0.3rem;
+        border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+        border-bottom-color: var(--accent);
+        color: var(--text);
+    }
+
+    .nav-cta {
+        border-radius: 999px;
+        padding: 0.45rem 1rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        background: linear-gradient(to right, #fbbf24, #facc15);
+        color: #111827;
+        border: 1px solid #facc15;
+        box-shadow: 0 8px 18px rgba(250,204,21,0.6);
+    }
+
+    .nav-cta:hover {
+        box-shadow: 0 10px 26px rgba(250,204,21,0.8);
+        transform: translateY(-1px);
+    }
+
+    @media (max-width: 800px) {
+        .nav-links { display: none; }
+    }
+
+    /* ---------------- MAIN ---------------- */
+    main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 1.2rem;
+    }
+
+    /* תיקון גלילה לכל העוגנים – שיעצרו על הכותרת */
+    section,
+    #top,
+    #show,
+    #bio,
+    #reviews,
+    #contact {
+        scroll-margin-top: 140px;
+    }
+
+    /* ---------------- HERO ---------------- */
+    .hero {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 2rem;
+        padding: 2rem 0;
+    }
+
+    @media (max-width: 900px) {
+        .hero { grid-template-columns: 1fr; }
+    }
+
+    .hero-badge {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.7rem;
+        border-radius: 999px;
+        border: 1px solid #22c55e;
+        display: inline-flex;
+        gap: 0.4rem;
+        align-items: center;
+        background: rgba(22,163,74,0.15);
+        margin-bottom: 0.8rem;
+        color: #bbf7d0; /* ירוק זוהר אבל קריא */
+    }
+
+    .hero-title {
+        font-size: clamp(2.2rem, 4vw, 3rem);
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+        text-shadow: 0 0 22px rgba(234,179,8,0.5);
+    }
+
+    /* כותרת משנית – גופן אחיד ומודגש */
+    .hero-artist {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #fef3c7;
+        margin: 0 0 1rem;
+        text-shadow: 0 0 14px rgba(250,204,21,0.4);
+        letter-spacing: 0.03em;
+    }
+
+    .hero-artist span {
+        font-weight: 800;
+    }
+
+    .hero-subtitle {
+        color: var(--muted);
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .buttons-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+
+    .btn-primary {
+        background: linear-gradient(to bottom, #facc15, #eab308);
+        padding: 0.7rem 1.4rem;
+        border-radius: 999px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        color: #111;
+        box-shadow: 0 10px 24px rgba(234,179,8,0.7);
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 30px rgba(234,179,8,0.85);
+    }
+
+    .btn-outline {
+        background: rgba(255,255,255,0.05);
+        padding: 0.7rem 1.3rem;
+        border-radius: 999px;
+        border: 1px solid rgba(148,163,184,0.7);
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .btn-outline:hover {
+        background: rgba(148,163,184,0.22);
+    }
+
+    /* ---------------- GALLERY ---------------- */
+    .hero-gallery {
+        padding: 1.1rem;
+        border-radius: 1.4rem;
+        border: 1px solid rgba(148,163,184,0.4);
+        background: rgba(15,23,42,0.6);
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.4rem;
+    }
+
+    @media (max-width: 500px) {
+        .gallery-grid { grid-template-columns: repeat(2,1fr); }
+    }
+
+    .gallery-grid img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        border-radius: 0.6rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        cursor: pointer;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .gallery-grid img:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+    /* POPUP גלריה */
+    .lightbox-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.85);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+    }
+
+    .lightbox-overlay.active {
+        display: flex;
+    }
+
+    .lightbox-inner {
+        max-width: 90vw;
+        max-height: 90vh;
+        position: relative;
+    }
+
+    .lightbox-inner img {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 0.8rem;
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(15,23,42,0.8);
+        border-radius: 999px;
+        border: 1px solid rgba(148,163,184,0.8);
+        padding: 0.4rem 0.7rem;
+        font-size: 1.1rem;
+        cursor: pointer;
+    }
+
+    .lightbox-close {
+        top: 8%;
+        right: 0;
+        transform: none;
+    }
+
+    .lightbox-prev {
+        right: 100%;
+        margin-right: 0.5rem;
+    }
+
+    .lightbox-next {
+        left: 100%;
+        margin-left: 0.5rem;
+    }
+
+    /* ---------------- TITLES ---------------- */
+    .section-title {
+        font-size: 1.7rem;
+        margin-bottom: 0.4rem;
+        color: var(--accent);
+        text-shadow: 0 0 18px rgba(234,179,8,0.4);
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+        color: var(--muted);
+        margin-bottom: 1.3rem;
+    }
+
+    /* ---------------- CARDS ---------------- */
+    .card {
+        background: rgba(15,23,42,0.8);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 1.1rem;
+        padding: 1.2rem;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* BIO */
+    .bio-layout {
+        display: flex;
+        gap: 1.2rem;
+        align-items: flex-start;
+    }
+
+    @media (max-width: 700px) {
+        .bio-layout { flex-direction: column; }
+    }
+
+    .bio-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 20%, #facc15, #eab308);
+        border: 2px solid rgba(250,204,21,0.6);
+    }
+
+    /* FEEDBACK – אזור צר יותר וקרוסלה */
+    #reviews .card {
+        padding: 1.5rem 1.4rem;
+    }
+
+    .reviews-inner {
+        max-width: 780px;
+        margin: 0 auto;
+    }
+
+    .reviews-carousel {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        padding-bottom: 0.4rem;
+        scroll-snap-type: x mandatory;
+    }
+
+    .reviews-carousel::-webkit-scrollbar {
+        height: 6px;
+    }
+    .reviews-carousel::-webkit-scrollbar-track {
+        background: rgba(15,23,42,0.9);
+    }
+    .reviews-carousel::-webkit-scrollbar-thumb {
+        background: rgba(148,163,184,0.7);
+        border-radius: 999px;
+    }
+
+    .feedback-card {
+        flex: 0 0 260px;
+        max-width: 300px;
+        background: rgba(15,23,42,0.95);
+        border-radius: 1rem;
+        border: 1px solid rgba(148,163,184,0.6);
+        padding: 0.9rem 1rem;
+        font-size: 0.9rem;
+        position: relative;
+        scroll-snap-align: start;
+    }
+
+    .feedback-card-text {
+        line-height: 1.6;
+    }
+
+    .feedback-card-text::before,
+    .feedback-card-text::after {
+        content: "״";
+        font-weight: 700;
+        color: rgba(250,204,21,0.8);
+        font-size: 1.1rem;
+    }
+
+    .feedback-card-text::before {
+        margin-left: 0.2rem;
+    }
+
+    .feedback-card-text::after {
+        margin-right: 0.2rem;
+    }
+
+    .feedback-author {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #facc15;
+    }
+
+    .feedback-author span {
+        color: #e5e7eb;
+        font-weight: 500;
+    }
+
+    .reviews-separator {
+        margin: 1.3rem 0 1rem;
+        border: none;
+        border-top: 1px dashed rgba(148,163,184,0.5);
+    }
+
+    .feedback-form {
+        display: grid;
+        gap: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .field label {
+        display: block;
+        margin-bottom: 0.2rem;
+        font-size: 0.9rem;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+        width: 100%;
+        padding: 0.55rem;
+        background: rgba(255,255,255,0.08);
+        border-radius: 0.5rem;
+        border: 1px solid rgba(255,255,255,0.18);
+        color: #fff;
+        font-family: inherit;
+        font-size: 0.9rem;
+    }
+
+    .field textarea {
+        min-height: 90px;
+        resize: vertical;
+    }
+
+    /* לשיפור נראות האופציות ברשימות */
+    .field select option {
+        background: #020617;
+        color: #f9fafb;
+    }
+
+    .mail-link {
+        display: inline-block;
+        margin-top: 0.6rem;
+        padding: 0.6rem 1.2rem;
+        border-radius: 999px;
+        background: linear-gradient(to right, #f97316, #facc15);
+        color: #111827;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .form-success {
+        margin-top: 0.6rem;
+        font-size: 0.9rem;
+        color: #bbf7d0; /* ירוק רך */
+    }
+
+    .contact-note {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-top: 0.4rem;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 1.5rem;
+    }
+
+    @media (max-width: 800px) {
+        .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    .contact-form {
+        display: grid;
+        gap: 0.7rem;
+    }
+
+    /* שדות טופס יצירת קשר משתמשים באותו סטייל */
+    .contact-form .field input,
+    .contact-form .field textarea {
+        width: 100%;
+        padding: 0.55rem;
+        background: rgba(255,255,255,0.08);
+        border-radius: 0.5rem;
+        border: 1px solid rgba(255,255,255,0.18);
+        color: #fff;
+        font-family: inherit;
+        font-size: 0.9rem;
+    }
+
+    footer {
+        text-align: center;
+        padding: 2rem;
+        font-size: 0.8rem;
+        color: var(--muted);
+    }
+</style>
+
+</head>
+<body>
+
+<header>
+    <nav class="nav">
+        <div class="logo">
+            <div class="logo-dot"></div>
+            <span>לשתות את עצמינו לדעת</span>
+        </div>
+        <div class="nav-links">
+            <a href="#show">על המופע</a>
+            <a href="#bio">על ענבל</a>
+            <a href="#reviews">תגובות קהל</a>
+            <a href="#contact">יצירת קשר</a>
+        </div>
+        <a href="#contact" class="nav-cta">הזמנת מופע</a>
+    </nav>
+</header>
+
+<main>
+
+<section class="hero" id="top">
+    <div>
+        <div class="hero-badge">
+            <span>מופע יחיד חדש</span>
+        </div>
+
+        <h1 class="hero-title">לשתות את עצמינו לדעת</h1>
+
+        <h2 class="hero-artist">
+            שחקנית יוצרת – <span>ענבל קפלן</span>
+        </h2>
+
+        <p class="hero-subtitle">
+            לילה. פאב. שולחנות קטנים ואורות עמומים. על הבר – אישה אחת, כמה פנים, הרבה סיפורים.
+            ערב שבו החיים והבדידות נמזגים יחד, כוס אחרי כוס – והקהל הופך לחלק מהסיפור.
+        </p>
+
+        <div class="buttons-row">
+            <a href="#contact"><button class="btn-primary" type="button">דברו איתי על תאריך</button></a>
+            <a href="#show"><button class="btn-outline" type="button">קרא/י עוד</button></a>
+        </div>
+    </div>
+
+    <aside class="hero-gallery">
+        <div class="gallery-grid">
+            <!-- כאן להכניס את שמות הקבצים האמיתיים שבתיקיית IMAGES -->
+            <img src="IMAGES/img1.jpg" alt="מתוך המופע">
+            <img src="IMAGES/img2.jpg" alt="מתוך המופע">
+            <img src="IMAGES/img3.jpg" alt="מתוך המופע">
+            <img src="IMAGES/img4.jpg" alt="מתוך המופע">
+            <img src="IMAGES/img5.jpg" alt="מתוך המופע">
+            <img src="IMAGES/img6.jpg" alt="מתוך המופע">
+        </div>
+    </aside>
+</section>
+
+<section id="show">
+    <h2 class="section-title">על המופע</h2>
+    <p class="section-subtitle">ערב אינטימי שבו מציאות, בדידות ואומץ נפתחים על הבר.</p>
+
+    <div class="card">
+        <p>
+            לילה. פאב. שולחנות קטנים ואורות עמומים. על הבר – אישה אחת, כמה פנים, הרבה סיפורים.
+            "לשתות את עצמנו – לדעת" הוא ערב שבו החיים והבדידות נמזגים יחד, כוס אחרי כוס.
+        </p>
+        <p>
+            בין שאלה לשתיקה, בין תשובה שלא נאמרת, נחשפים סיפורים אישיים – על אובדן, על אהבה,
+            על כמיהה ועל הכוח להמשיך למרות הכל.
+        </p>
+        <p>
+            המפגש מתקיים בפאב חי ופועם, והקהל שותף, גם כצופים, וגם כחלק מספיד דייט שנארג במופע.
+            מוזמנים להגיע, לשתות, לדבר ולשתף זרים מוחלטים. אף אחד לא יישב עם האדם שהגיע איתו,
+            בתקווה שייפתחו הלב והדעת.
+        </p>
+        <p>
+            הסיפורים שתספרו לעצמכם, לדייט שלכם ולי יובילו לסיפורים שלי – גרושה, עצמאית, בודדה,
+            גיבורה ולפעמים גם סטריאוטיפית. אולי נגלה במה אנחנו דומים ובמה שונים, היכן אנחנו
+            מרגישים בנוח ומתי שולטים בנו הספק ואי-הנוחות.
+        </p>
+        <p>
+            זהו ערב שבו לא שותים כדי לשכוח. שותים כדי לזכור, כדי לדעת משהו נוסף על עצמנו.
+        </p>
+    </div>
+</section>
+
+<section id="bio">
+    <h2 class="section-title">על ענבל קפלן</h2>
+    <p class="section-subtitle">שחקנית יוצרת, מורה לתיאטרון ומאפרת במה.</p>
+
+    <div class="card bio-layout">
+        <div class="bio-avatar"></div>
+        <div class="bio-text">
+            <p>
+                נולדתי וגדלתי בירושלים, וכבר מגיל צעיר הבמה הייתה המקום הבטוח שלי — ריקוד, שירה ומשחק.
+                בתיכון למדתי במגמת תיאטרון ושיחקתי במחזות זמר, ומהם המשכתי ללימודי תיאטרון והוראה.
+                בהמשך השלמתי תואר שני MFA באוניברסיטת תל-אביב.
+            </p>
+            <p>
+                לאורך השנים יצרתי שני מופעים אישיים: “חמוציות וגרעיני פשתן”, שעסק בקשר הסבוך בין הורים,
+                ילדים וגבולות, ו-“לשתות את עצמנו – לדעת”, העוסק בחלקים מסיפור חיי בשיתוף חי של הקהל.
+            </p>
+            <p>
+                אני מלמדת תיאטרון במסגרות מגוונות — חינוך מיוחד, מגמות תיאטרון ומכללת אמונה.
+                כשחקנית הופעתי במחזות זמר, דמויות שטח, סרטי סטודנטים וסרטונים חינוכיים.
+                במקצועי אני גם מאפרת במה.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="reviews">
+    <h2 class="section-title">תגובות קהל</h2>
+    <p class="section-subtitle">קצת ממה שאנשים סיפרו אחרי המופע, ואז המקום שלך להצטרף.</p>
+
+    <div class="card">
+        <div class="reviews-inner">
+            <!-- קרוסלת תגובות מאושרות -->
+            <div class="reviews-carousel">
+                <div class="feedback-card">
+                    <div class="feedback-card-text">
+                        ערב מיוחד מאודד כזה שלא חוויתי באף מופע/הצגה אחרת שהייתי. באתי עם חשש שאצטרך להשתתף ולדבר מול קהל אבל זה ממש לא היה ככה. אני מודה שלקראת סוף המופע ועם קצת אלכוהול :) דווקא התאים לי ההתערבבות והוסיף לי לביטחון חחח
+                    </div>
+                    <div class="feedback-author">— <span>קהל במופע בפאב</span></div>
+                </div>
+
+                <div class="feedback-card">
+                    <div class="feedback-card-text">
+                        יצאתי מהמופע עם תחושה שמישהו סוף סוף שם על השולחן את הדברים שכולנו מרגישים ולא תמיד מעיזים להגיד. צחקתי, דמעתי, והרגשתי שאני פחות לבד בתוך הבלגן הזה שנקרא חיים.
+                    </div>
+                    <div class="feedback-author">— <span>תמר, ערב קהילה בירושלים</span></div>
+                </div>
+
+                <!-- כשתהיה לך תגובה אמיתית נוספת, אפשר לשכפל בלוק כזה ולהחליף טקסט ושם -->
+            </div>
+
+            <hr class="reviews-separator">
+
+            <!-- טופס השארת תגובה -->
+            <form id="feedback-form" class="feedback-form" action="https://formspree.io/f/mnnrbyje" method="POST">
+                <div class="field">
+                    <label for="fb-name">שם (לא חובה)</label>
+                    <input id="fb-name" name="name" type="text" placeholder="אפשר גם להישאר בעילום שם">
+                </div>
+
+                <div class="field">
+                    <label for="fb-source">איפה שמעת על המופע?</label>
+                    <select id="fb-source" name="source" required>
+                        <option value="">בחר/י...</option>
+                        <option value="whatsapp">ווטסאפ</option>
+                        <option value="social">רשת חברתית (פייסבוק, אינסטגרם)</option>
+                        <option value="word-of-mouth">מפה לאוזן</option>
+                        <option value="academia">אקדמיה</option>
+                        <option value="creator">מהיוצרת עצמה</option>
+                        <option value="other">אחר</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="fb-first">פעם ראשונה במופע?</label>
+                    <select id="fb-first" name="first_time" required>
+                        <option value="">בחר/י...</option>
+                        <option value="yes">כן</option>
+                        <option value="no">לא</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="fb-message">מה תרצה/י לספר?</label>
+                    <textarea id="fb-message" name="message" required></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="fb-approve">האם מאשר/ת לפרסם את התגובה באתר?</label>
+                    <select id="fb-approve" name="allow_publish" required>
+                        <option value="">בחר/י...</option>
+                        <option value="yes">כן</option>
+                        <option value="no">לא</option>
+                    </select>
+                </div>
+
+                <button class="btn-primary" type="submit">שליחת תגובה</button>
+            </form>
+
+            <p id="feedback-success" class="form-success" hidden>
+                תודה רבה על התגובה! התגובות הן למטרה טובה ומגיעות ישר ליוצרת.
+            </p>
+
+            <p class="contact-note">
+                רק חלק מהתגובות יופיעו באתר, לאחר אישור.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2 class="section-title">יצירת קשר</h2>
+    <p class="section-subtitle">להזמנת המופע, שיתופי פעולה או שאלות נוספות.</p>
+
+    <div class="card contact-grid">
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/mnnrbyje" method="POST">
+            <div class="field">
+                <label for="ct-name">שם מלא</label>
+                <input id="ct-name" type="text" name="name" required>
+            </div>
+            <div class="field">
+                <label for="ct-email">אימייל</label>
+                <input id="ct-email" type="email" name="email" required>
+            </div>
+            <div class="field">
+                <label for="ct-phone">טלפון</label>
+                <input id="ct-phone" type="tel" name="phone">
+            </div>
+            <div class="field">
+                <label for="ct-message">פרטים על האירוע</label>
+                <textarea id="ct-message" name="message"></textarea>
+            </div>
+            <button class="btn-primary" type="submit">שלח/י הודעה</button>
+
+            <p id="contact-success" class="form-success" hidden>
+                הודעה נשלחה בהצלחה! נחזור אליך בהקדם.
+            </p>
+        </form>
+
+        <div class="contact-details">
+            <p><strong>טלפון:</strong> 054-7499712</p>
+            <p><strong>אימייל:</strong> inbalcaplan@gmail.com</p>
+            <p>
+                <a href="mailto:inbalcaplan@gmail.com" class="mail-link">
+                    כתבו לי ישירות למייל
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    © כל הזכויות שמורות • לשתות את עצמינו לדעת • ענבל קפלן
+</footer>
+
+<!-- GALERY + FORMS SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    /* ---------- FORMSPREE: יצירת קשר ---------- */
+    const contactForm = document.getElementById("contact-form");
+    const contactSuccess = document.getElementById("contact-success");
+
+    if (contactForm) {
+        contactForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const data = new FormData(contactForm);
+
+            const res = await fetch(contactForm.action, {
+                method: "POST",
+                body: data,
+                headers: { "Accept": "application/json" }
+            });
+
+            if (res.ok) {
+                contactForm.reset();
+                if (contactSuccess) contactSuccess.hidden = false;
+            } else {
+                alert("הייתה בעיה בשליחת הטופס. נסי שוב מאוחר יותר.");
+            }
+        });
+    }
+
+    /* ---------- FORMSPREE: תגובות ---------- */
+    const feedbackForm = document.getElementById("feedback-form");
+    const feedbackSuccess = document.getElementById("feedback-success");
+
+    if (feedbackForm) {
+        feedbackForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const data = new FormData(feedbackForm);
+
+            const res = await fetch(feedbackForm.action, {
+                method: "POST",
+                body: data,
+                headers: { "Accept": "application/json" }
+            });
+
+            if (res.ok) {
+                feedbackForm.reset();
+                if (feedbackSuccess) feedbackSuccess.hidden = false;
+            } else {
+                alert("הייתה בעיה בשליחת התגובה. נסי שוב מאוחר יותר.");
+            }
+        });
+    }
+
+    /* ---------- גלריית תמונות (popup) ---------- */
+    const images = Array.from(document.querySelectorAll(".gallery-grid img"));
+    if (images.length) {
+        // יצירת אלמנטים של הלייטבוקס
+        const overlay = document.createElement("div");
+        overlay.className = "lightbox-overlay";
+        overlay.innerHTML = `
+            <div class="lightbox-inner">
+                <button class="lightbox-close" aria-label="סגירה">✕</button>
+                <button class="lightbox-prev" aria-label="תמונה קודמת">‹</button>
+                <button class="lightbox-next" aria-label="תמונה הבאה">›</button>
+                <img src="" alt="תמונה מהמופע">
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        const overlayImg = overlay.querySelector("img");
+        const btnClose = overlay.querySelector(".lightbox-close");
+        const btnPrev = overlay.querySelector(".lightbox-prev");
+        const btnNext = overlay.querySelector(".lightbox-next");
+
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            overlayImg.src = images[currentIndex].src;
+            overlay.classList.add("active");
+        }
+
+        function closeLightbox() {
+            overlay.classList.remove("active");
+        }
+
+        function showPrev() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            overlayImg.src = images[currentIndex].src;
+        }
+
+        function showNext() {
+            currentIndex = (currentIndex + 1) % images.length;
+            overlayImg.src = images[currentIndex].src;
+        }
+
+        images.forEach((img, index) => {
+            img.addEventListener("click", () => openLightbox(index));
+        });
+
+        btnClose.addEventListener("click", closeLightbox);
+        btnPrev.addEventListener("click", showPrev);
+        btnNext.addEventListener("click", showNext);
+
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) closeLightbox();
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (!overlay.classList.contains("active")) return;
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowLeft") showPrev();
+            if (e.key === "ArrowRight") showNext();
+        });
+    }
+});
+</script>
+
+</body>
+</html>
